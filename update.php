@@ -1,6 +1,6 @@
 <?php
 include "connect.php";
-
+$id = $_POST['id'];
 if (isset($_POST['submit'])) {
     if ($_POST['tieude'] != NULL && $_POST['tacgia'] != NULL && $_POST['mota'] != NULL && $_POST['ngayphathanh'] != NULL && $_POST['gia'] != NULL && $_POST['sotrang'] != NULL && $_POST['theloai'] != NULL) {
         $tieude = $_POST['tieude'];
@@ -17,25 +17,21 @@ if (isset($_POST['submit'])) {
         $link = "./src/images/" . $anh;
         move_uploaded_file($tempname, $link);
 
-        $sql = "INSERT INTO data (tieude, tacgia, mota, ngayphathanh, gia, sotrang, theloai, anh) VALUES ('$tieude', '$tacgia', '$mota','$ngayphathanh','$gia','$sotrang','$theloai','$link')";
+        $sql = "UPDATE data SET tieude='$tieude',  tacgia='$tacgia', mota='$mota',ngayphathanh='$ngayphathanh',gia='$gia',sotrang='$sotrang',theloai='$theloai',anh='$link'
+        WHERE id= '$id'";
         $query = mysqli_query($connect, $sql);
         if ($query) {
             echo "<script>";
-            echo "alert('Thêm mới thành công');";
-            echo "window.location.href='./postData.php';";
+            echo "alert('Chỉnh sửa thành công');";
+            echo "window.location.href='./admin.php';";
             echo "</script>";
         }
     } else {
         echo "<script>";
         echo "alert('Vui lòng điền đủ thông tin');";
-        echo "window.location.href='./postData.php';";
+        echo "window.location.href='./xuly.php';";
         echo "</script>";
     }
 
-} else {
-    echo "<script>";
-    echo "alert('Bạn đang truy cập trái phép');";
-    echo "window.location.href='./postData.php';";
-    echo "</script>";
 }
 ?>

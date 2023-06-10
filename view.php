@@ -54,6 +54,13 @@
             </div>
         </nav>
     </header>
+    <div class="continer">
+        <div class="row">
+            <div class="container">
+                <h1>List Products</h1>
+            </div>
+        </div>
+    </div>
     <?php
     include "connect.php";
 
@@ -65,7 +72,7 @@
         $tacgia = $row['tacgia'];
         $gia = $row['gia'];
         $anh = $row['anh'];
-
+        $id = $row['id'];
         ?>
         <ul class="list-group">
 
@@ -81,12 +88,15 @@
                         <p>
                             <?php echo $tieude ?>
                         </p>
-                        <span class="badge bg-primary">Price:
-                            <?php echo $gia ?>
-                        </span>
-                        <button class="btn btn-primary">Add to Cart</button>
-                        <button type="button" class="btn btn-primary"><a href="./chitiet.php" class="deltail">Chi
-                                tiết</a></button>
+                        <ul class="list">
+                            <li><span>Giá:
+                                    <?php echo $gia ?>
+                                </span></li>
+                            <li><button class="btn btn-primary">Thêm vào giỏ hàng</button></li>
+                            <li><button type="button" class="btn btn-primary"><a
+                                        href="./chitiet.php?ID=<?php echo $row['id']; ?> " class="deltail">Chi
+                                        tiết</a></button></li>
+                        </ul>
                     </div>
                 </div>
             </li>
@@ -96,13 +106,7 @@
         <?php
     }
     ?>
-    <div class="continer">
-        <div class="row">
-            <div class="container">
-                <h1>List Products</h1>
-            </div>
-        </div>
-    </div>
+
 </body>
 
 </html>

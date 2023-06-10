@@ -7,11 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="./styles/postdata.css">
+    <link rel="stylesheet" href="./styles/xuly.css">
     <title>Document</title>
 </head>
 
 <body>
+    <?php
+    $id = $_GET['id'];
+    include "connect.php";
+    ?>
     <div class="container">
         <div class="row">
             <div class="col" id="form">
@@ -22,7 +26,8 @@
                         </div>
                         <div class="col-md-6">
                             <form method="post" accept-charset="utf-8" enctype="multipart/form-data"
-                                action="handleData.php">
+                                action="update.php">
+                                <input type="hidden" name="id" value="<?php echo $id ?>">
                                 <div class="form-group">
                                     <label>Tiêu đề</label>
                                     <input type="text" name="tieude" class="form-control" required>
@@ -60,7 +65,9 @@
                                 <div id="imagePreview"></div>
 
                                 </br>
-                                <button type="submit" class="btn btn-primary" name="submit">Upload</button>
+                                <button id="change" type="submit" class="btn " name="submit"><a
+                                        href="./update.php?id=<?php echo $row['id']; ?> ">Lưu
+                                        chỉnh sửa</a></button>
                         </div>
                     </div>
                 </div>

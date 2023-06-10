@@ -14,36 +14,30 @@
 </head>
 
 <body>
-    <button type="button" class="btn btn-primary add"><a href="./postData.php" class="add-item">Add new
-            book</a></button>
+   
     <form>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">STT</th>
-                    <th scope="col">Tiêu đề</th>
-                    <th scope="col">Tác giả</th>
-                    <th scope="col">Thể loại</th>
-                    <th scope="col">Giá</th>
-                    <th scope="col">Ngày phát hành</th>
-                    <th scope="col">Số trang</th>
+                    <th scope="col">Tên người dùng</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+
                 </tr>
             </thead>
             <tbody class="table-group-divider">
                 <?php
                 include "connect.php";
 
-                $sql = "SELECT * FROM data ";
+                $sql = "SELECT * FROM user ";
                 $query = mysqli_query($connect, $sql);
 
                 while ($row = mysqli_fetch_assoc($query)) {
                     $id = $row['id'];
-                    $tacgia = $row['tacgia'];
-                    $tieude = $row['tieude'];
-                    $theloai = $row['theloai'];
-                    $gia = $row['gia'];
-                    $ngayphathanh = $row['ngayphathanh'];
-                    $sotrang = $row['sotrang'];
+                    $username = $row['username'];
+                    $email = $row['email'];
+                    $password = $row['password'];
 
                     ?>
                     <tr>
@@ -51,27 +45,19 @@
                             <?php echo $id ?>
                         </th>
                         <th scope="row">
-                            <?php echo $tacgia ?>
+                            <?php echo $username ?>
                         </th>
                         <th scope="row">
-                            <?php echo $tieude ?>
+                            <?php echo $email ?>
                         </th>
                         <th scope="row">
-                            <?php echo $theloai ?>
-                        </th>
-                        <th scope="row">
-                            <?php echo $gia ?>
-                        </th>
-                        <th scope="row">
-                            <?php echo $ngayphathanh ?>
-                        </th>
-                        <th scope="row">
-                            <?php echo $sotrang ?>
+                            <?php echo $password ?>
                         </th>
 
+
                         <th scope="row">
-                            <a href="./xuly.php?id=<?php echo $row['id']; ?>" class=" btn btn-outline-primary">Sửa
-                                <a href="./delete.php?id=<?php echo $row['id']; ?>" class=" btn btn-outline-primary">Xoá
+
+                            <a href="./deleteuser.php?id=<?php echo $row['id']; ?>" class=" btn btn-outline-primary">Xoá
                         </th>
                     </tr>
 
@@ -81,8 +67,6 @@
             </tbody>
         </table>
     </form>
-    <button type="button" class="btn btn-primary add"><a href="./quanlyuser.php" class="add-item">Quản lý người dùng
-        </a></button>
 </body>
 
 </html>

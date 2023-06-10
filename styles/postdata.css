@@ -1,0 +1,19 @@
+
+.row {
+  display: flex;
+  align-items: center;
+}
+#form {
+  padding-top: 100px;
+  width: 900px;
+  height: 800px;
+}
+#doc {
+  padding-top: 100px;
+  width: 900px;
+  height: 800px;
+}
+#imagePreview > img {
+  width: 500px;
+  height: 500px;
+}
